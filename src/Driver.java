@@ -28,6 +28,32 @@ public class Driver extends Application {
 
 	int x = 0, y = 0;
 	
+	public boolean areRectsColliding1(int player1TopLeftX, int player1BottomRightX,int player1TopLeftY, 
+			int player1BottomRightY,int item1TopLeftX,int item1BottomRightX, int item1TopLeftY, int item1BottomRightY)
+			{
+			item1TopLeftX = coin1.x;
+			item1TopLeftY = coin1.y;
+			item1BottomRightX = coin1.x + 25;
+			item1BottomRightY = coin1.y - 25;
+			player1TopLeftX = (int)myImageView.getX();
+			player1TopLeftY = (int)myImageView.getY();
+			player1BottomRightX = (int)myImageView.getX() + 25;
+			player1BottomRightY = (int)myImageView.getY() - 25;
+			
+			
+			
+			if (player1TopLeftX < item1BottomRightX && player1BottomRightX >
+			item1TopLeftX&& player1TopLeftY < item1BottomRightY && player1BottomRightY >
+			item1TopLeftY) 
+			{
+			return false;
+			}
+			else
+			{
+			return true;
+			}
+			}
+		
 	
 	Random myRand = new Random();
 	int randomX;
@@ -169,6 +195,7 @@ public class Driver extends Application {
 		text1.setText(pOne.getPlayerName());
 		
 		
+		
 		Group root2 = new Group(myImageView,text1,itemImageView1,itemImageView2,itemImageView3,itemImageView4,itemImageView5);
 		Scene scene2 = new Scene(root2,500,500,Color.WHITE);
 		scene2.setOnKeyPressed(this::listenUp);
@@ -213,30 +240,5 @@ public class Driver extends Application {
 		
 		
 	}
-	public boolean areRectsColliding1(int player1TopLeftX, int player1BottomRightX,int player1TopLeftY, 
-			int player1BottomRightY,int item1TopLeftX,int item1BottomRightX, int item1TopLeftY, int item1BottomRightY)
-			{
-			item1TopLeftX = coin1.x;
-			item1TopLeftY = coin1.y;
-			item1BottomRightX = coin1.x + 25;
-			item1BottomRightY = coin1.y - 25;
-			player1TopLeftX = (int)myImageView.getX();
-			player1TopLeftY = (int)myImageView.getY();
-			player1BottomRightX = (int)myImageView.getX() + 25;
-			player1BottomRightY = (int)myImageView.getY() - 25;
-			
-			
-			
-			if (player1TopLeftX < item1BottomRightX && player1BottomRightX >
-			item1TopLeftX&& player1TopLeftY < item1BottomRightY && player1BottomRightY >
-			item1TopLeftY) 
-			{
-			return true;
-			}
-			else
-			{
-			return false;
-			}
-			}
-		
+	
 }

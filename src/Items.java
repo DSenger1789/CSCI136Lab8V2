@@ -6,6 +6,7 @@ public class Items {
 	String imagePath;
 	int x;
 	int y;
+	boolean appear = true;
 	
 	public Items(String imagePath, int x, int y) {
 		this.itemName = "item";
