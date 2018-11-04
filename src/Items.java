@@ -1,5 +1,5 @@
-//Wit Sampson
-// Data Created: 10/19/2018
+//Wit Sampson & Dustin Senger 
+// Data Created: 11/03/2018
 //The purpose of this class is to be able to add the items to the main game that the player will be attempting to collect
 public class Items {
 	private String itemName;

@@ -1,5 +1,5 @@
-//Wit Sampson
-// Data Created: 10/19/2018
+//Wit Sampson & Dustin Senger
+// Data Created: 11/03/2018
 // The purpose of this class is to put the player into the game, the one that is being played by the user
 public class playerOne {
 	private String playerName;

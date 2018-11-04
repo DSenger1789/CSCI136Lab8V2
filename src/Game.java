@@ -1,5 +1,5 @@
-//Wit Sampson
-// Data Created: 10/19/2018
+//Wit Sampson & Dustin Senger
+// Data Created: 11/03/2018
 // The purpose of this class is the display the top scores of the players
 public class Game {
 	private playerOne player;

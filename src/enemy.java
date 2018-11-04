@@ -1,5 +1,5 @@
-//Wit Sampson
-// Data Created: 10/19/2018
+//Wit Sampson & Dustin Senger
+// Data Created: 11/03/2018
 // The purpose of this class is to put the enemy of the player into the game and if the player hits the enemy, they lose
 public class enemy {
 	
@@ -11,8 +11,8 @@ public class enemy {
 		this.imagePath = imagePath;
 	}
 	
-	public void Movement() {
+/*	public void Movement() {
 		Movement move = new Movement(enemyName);
 	}
-	
+*/	
 }

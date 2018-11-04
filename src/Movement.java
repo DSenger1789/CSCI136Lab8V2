@@ -4,8 +4,8 @@ import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-//Wit Sampson
-// Data Created: 10/19/2018
+//Wit Sampson & Dustin Senger
+// Data Created: 11/03/2018
 //The purpose of this class is to give movement to the game
 public class Movement {
 	private int x;

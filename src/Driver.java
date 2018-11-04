@@ -299,6 +299,10 @@ public class Driver extends Application {
 		itemCollected = itemCollected + 1;
 		}
 		
+		if (itemImageView1.getImage()  == null) {
+			
+		}
+		
 		score.setText("Points: " + itemCollected);
 		System.out.println(coin1.getX());
 		System.out.println(myImageView.getX());
