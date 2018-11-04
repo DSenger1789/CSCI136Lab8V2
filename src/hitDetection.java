@@ -5,10 +5,32 @@ public class hitDetection {
 	int player1BottomRightX;
 	int player1TopLeftY;
 	int player1BottomRightY;
+	
 	int item1TopLeftX;
 	int item1BottomRightX;
 	int item1TopLeftY;
 	int item1BottomRightY;
+	
+	int item2TopLeftX;
+	int item2BottomRightX;
+	int item2TopLeftY;
+	int item2BottomRightY;
+	
+	int item3TopLeftX;
+	int item3BottomRightX;
+	int item3TopLeftY;
+	int item3BottomRightY;
+	
+	int item4TopLeftX;
+	int item4BottomRightX;
+	int item4TopLeftY;
+	int item4BottomRightY;
+	
+	int item5TopLeftX;
+	int item5BottomRightX;
+	int item5TopLeftY;
+	int item5BottomRightY;
+	
 	
 	public hitDetection () {
 		

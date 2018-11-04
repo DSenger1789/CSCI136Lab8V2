@@ -227,14 +227,36 @@ public class Driver extends Application {
 		text1.setX(move.getX());
 		text1.setY(move.getY());
 		
-		hit.item1TopLeftX = coin1.getX();
-		hit.item1TopLeftY = coin1.getY();
-		hit.item1BottomRightX = coin1.getX() + 25;
-		hit.item1BottomRightY = coin1.getY() + 25;
 		hit.player1TopLeftX = (int)myImageView.getX();
 		hit.player1TopLeftY = (int)myImageView.getY();
 		hit.player1BottomRightX = (int)myImageView.getX() + 50;
 		hit.player1BottomRightY = (int)myImageView.getY() + 50;
+		
+		
+		hit.item1TopLeftX = coin1.getX();
+		hit.item1TopLeftY = coin1.getY();
+		hit.item1BottomRightX = coin1.getX() + 25;
+		hit.item1BottomRightY = coin1.getY() + 25;
+		
+		hit.item2TopLeftX = coin2.getX();
+		hit.item2TopLeftY = coin2.getY();
+		hit.item2BottomRightX = coin2.getX() + 25;
+		hit.item2BottomRightY = coin2.getY() + 25;
+		
+		hit.item3TopLeftX = coin3.getX();
+		hit.item3TopLeftY = coin3.getY();
+		hit.item3BottomRightX = coin3.getX() + 25;
+		hit.item3BottomRightY = coin3.getY() + 25;
+		
+		hit.item4TopLeftX = coin4.getX();
+		hit.item4TopLeftY = coin4.getY();
+		hit.item4BottomRightX = coin4.getX() + 25;
+		hit.item4BottomRightY = coin4.getY() + 25;
+		
+		hit.item5TopLeftX = coin5.getX();
+		hit.item5TopLeftY = coin5.getY();
+		hit.item5BottomRightX = coin5.getX() + 25;
+		hit.item5BottomRightY = coin5.getY() + 25;
 		
 		
 		if (hit.player1TopLeftX < hit.item1BottomRightX && hit.player1BottomRightX >
@@ -242,6 +264,38 @@ public class Driver extends Application {
 		hit.item1TopLeftY) 
 		{
 		itemImageView1.setImage(null);
+		itemCollected = itemCollected + 1;
+		}
+		
+		if (hit.player1TopLeftX < hit.item2BottomRightX && hit.player1BottomRightX >
+		hit.item2TopLeftX&& hit.player1TopLeftY < hit.item2BottomRightY && hit.player1BottomRightY >
+		hit.item2TopLeftY) 
+		{
+		itemImageView2.setImage(null);
+		itemCollected = itemCollected + 1;
+		}
+		
+		if (hit.player1TopLeftX < hit.item3BottomRightX && hit.player1BottomRightX >
+		hit.item3TopLeftX&& hit.player1TopLeftY < hit.item3BottomRightY && hit.player1BottomRightY >
+		hit.item3TopLeftY) 
+		{
+		itemImageView3.setImage(null);
+		itemCollected = itemCollected + 1;
+		}
+		
+		if (hit.player1TopLeftX < hit.item4BottomRightX && hit.player1BottomRightX >
+		hit.item4TopLeftX&& hit.player1TopLeftY < hit.item4BottomRightY && hit.player1BottomRightY >
+		hit.item4TopLeftY) 
+		{
+		itemImageView4.setImage(null);
+		itemCollected = itemCollected + 1;
+		}
+		
+		if (hit.player1TopLeftX < hit.item5BottomRightX && hit.player1BottomRightX >
+		hit.item5TopLeftX&& hit.player1TopLeftY < hit.item5BottomRightY && hit.player1BottomRightY >
+		hit.item5TopLeftY) 
+		{
+		itemImageView5.setImage(null);
 		itemCollected = itemCollected + 1;
 		}
 		
