@@ -6,6 +6,11 @@ public class hitDetection {
 	int player1TopLeftY;
 	int player1BottomRightY;
 	
+	int enemy1TopLeftX;
+	int enemy1BottomRightX;
+	int enemy1TopLeftY;
+	int enemy1BottomRightY;
+	
 	int item1TopLeftX;
 	int item1BottomRightX;
 	int item1TopLeftY;

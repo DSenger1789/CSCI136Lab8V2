@@ -27,6 +27,7 @@ public class Driver extends Application {
 	ImageView itemImageView3;
 	ImageView itemImageView4;
 	ImageView itemImageView5;
+	ImageView enemyImageView;
 
 	int x = 0, y = 0;
 	
@@ -110,6 +111,12 @@ public class Driver extends Application {
 		Image itemImage4 = new Image(coin4.getImagePath(), 50, 50, false, appear);
 		Image itemImage5 = new Image(coin5.getImagePath(), 50, 50, false, appear);
 		
+		Image enemyImage = new Image("file:src/enemy.jpg");
+		enemyImageView = new ImageView(enemyImage);
+		enemyImageView.setFitHeight(50);
+		enemyImageView.setFitWidth(50);
+		
+		
 		itemImageView1 = new ImageView(itemImage1);
 		itemImageView1.setFitWidth(25);
 		itemImageView1.setFitHeight(25);
@@ -170,7 +177,10 @@ public class Driver extends Application {
 		itemImageView5.setX(coin5.getX());
 		itemImageView5.setY(coin5.getY());
 		
-		
+		randomX = myRand.nextInt(450);
+		randomY = myRand.nextInt(450);
+		enemyImageView.setX(randomX);
+		enemyImageView.setY(randomY);
 		
 		//System.out.println(items.toString());
 		
@@ -187,7 +197,7 @@ public class Driver extends Application {
 		
 		
 		
-		Group root2 = new Group(myImageView,text1,score, itemImageView1,itemImageView2,itemImageView3,itemImageView4,itemImageView5);
+		Group root2 = new Group(myImageView,text1,score,enemyImageView, itemImageView1,itemImageView2,itemImageView3,itemImageView4,itemImageView5);
 		Scene scene2 = new Scene(root2,500,500,Color.WHITE);
 		scene2.setOnKeyPressed(this::listenUp);
 		Stage SecondaryStage = new Stage();
@@ -258,13 +268,17 @@ public class Driver extends Application {
 		hit.item5BottomRightX = coin5.getX() + 25;
 		hit.item5BottomRightY = coin5.getY() + 25;
 		
+		hit.enemy1TopLeftX = (int)enemyImageView.getX();
+		hit.enemy1TopLeftY = (int)enemyImageView.getY();
+		hit.enemy1BottomRightX = (int)enemyImageView.getX() + 50;
+		hit.enemy1BottomRightY = (int)enemyImageView.getY() + 50;
+		
 		
 		if (hit.player1TopLeftX < hit.item1BottomRightX && hit.player1BottomRightX >
 		hit.item1TopLeftX&& hit.player1TopLeftY < hit.item1BottomRightY && hit.player1BottomRightY >
 		hit.item1TopLeftY) 
 		{
 		itemImageView1.setImage(null);
-		itemCollected = itemCollected + 1;
 		}
 		
 		if (hit.player1TopLeftX < hit.item2BottomRightX && hit.player1BottomRightX >
@@ -299,8 +313,16 @@ public class Driver extends Application {
 		itemCollected = itemCollected + 1;
 		}
 		
+		if (hit.player1TopLeftX < hit.enemy1BottomRightX && hit.player1BottomRightX >
+		hit.enemy1TopLeftX&& hit.player1TopLeftY < hit.enemy1BottomRightY && hit.player1BottomRightY >
+		hit.enemy1TopLeftY) 
+		{
+		itemImageView5.setImage(null);
+		itemCollected = itemCollected + 1;
+		}
+		
 		if (itemImageView1.getImage()  == null) {
-			
+			itemCollected = itemCollected + 1;
 		}
 		
 		score.setText("Points: " + itemCollected);
