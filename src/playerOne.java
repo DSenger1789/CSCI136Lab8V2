@@ -16,10 +16,10 @@ public class playerOne {
 		return imagePath;
 	}
 
-	public void Movement() {
+	/*public void Movement() {
 		Movement move = new Movement(playerName);
 	}
-	
+	*/
 	public int collectingItems(int itemCollected) {
 		return 0;
 	}

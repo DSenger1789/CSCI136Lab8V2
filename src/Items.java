@@ -2,17 +2,18 @@
 // Data Created: 10/19/2018
 //The purpose of this class is to be able to add the items to the main game that the player will be attempting to collect
 public class Items {
-	String itemName;
-	String imagePath;
-	int x;
-	int y;
-	boolean appear = true;
+	private String itemName;
+	private String imagePath;
+	private int x;
+	private int y;
+	private boolean appear = true;
 	
-	public Items(String imagePath, int x, int y) {
+	public Items(String imagePath, int x, int y, boolean appear) {
 		this.itemName = "item";
 		this.imagePath= imagePath;
 		this.x = x;
 		this.y = y;
+		this.appear = appear;
 	}
 
 	public String getItemName() {

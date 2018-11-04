@@ -10,7 +10,9 @@ public class hitDetection {
 	int item1TopLeftY;
 	int item1BottomRightY;
 	
-	
+	public hitDetection () {
+		
+	}	
 	public int getPlayer1TopLeftX() {
 		return player1TopLeftX;
 	}

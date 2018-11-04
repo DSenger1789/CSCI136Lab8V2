@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -28,42 +30,25 @@ public class Driver extends Application {
 
 	int x = 0, y = 0;
 	
-	public boolean areRectsColliding1(int player1TopLeftX, int player1BottomRightX,int player1TopLeftY, 
-			int player1BottomRightY,int item1TopLeftX,int item1BottomRightX, int item1TopLeftY, int item1BottomRightY)
-			{
-			item1TopLeftX = coin1.x;
-			item1TopLeftY = coin1.y;
-			item1BottomRightX = coin1.x + 25;
-			item1BottomRightY = coin1.y - 25;
-			player1TopLeftX = (int)myImageView.getX();
-			player1TopLeftY = (int)myImageView.getY();
-			player1BottomRightX = (int)myImageView.getX() + 25;
-			player1BottomRightY = (int)myImageView.getY() - 25;
-			
-			
-			
-			if (player1TopLeftX < item1BottomRightX && player1BottomRightX >
-			item1TopLeftX&& player1TopLeftY < item1BottomRightY && player1BottomRightY >
-			item1TopLeftY) 
-			{
-			return false;
-			}
-			else
-			{
-			return true;
-			}
-			}
-		
+	int itemCollected = 0;
+	
+	Movement move = new Movement (x,y);
 	
 	Random myRand = new Random();
 	int randomX;
 	int randomY;
+	boolean appear = true;
 	
-	Items coin1 = new Items ("file:src/coin.jpg", randomX, randomY);
-	Items coin2 = new Items ("file:src/coin.jpg", randomX, randomY);
-	Items coin3 = new Items ("file:src/coin.jpg", randomX, randomY);
-	Items coin4 = new Items ("file:src/coin.jpg", randomX, randomY);
-	Items coin5 = new Items ("file:src/coin.jpg", randomX, randomY);
+	hitDetection hit = new hitDetection();
+	
+	Items coin1 = new Items ("file:src/coin.jpg", randomX, randomY, appear);
+	Items coin2 = new Items ("file:src/coin.jpg", randomX, randomY, appear);
+	Items coin3 = new Items ("file:src/coin.jpg", randomX, randomY, appear);
+	Items coin4 = new Items ("file:src/coin.jpg", randomX, randomY, appear);
+	Items coin5 = new Items ("file:src/coin.jpg", randomX, randomY, appear);
+	
+	Text score = new Text ("Points: " + itemCollected);
+	
 	
 	ArrayList items = new ArrayList<Items>();
 	
@@ -117,11 +102,13 @@ public class Driver extends Application {
 		myImageView.setX(x);
 		myImageView.setY(y);
 		
-		Image itemImage1 = new Image(coin1.getImagePath());
-		Image itemImage2 = new Image(coin2.getImagePath());
-		Image itemImage3 = new Image(coin3.getImagePath());
-		Image itemImage4 = new Image(coin4.getImagePath());
-		Image itemImage5 = new Image(coin5.getImagePath());
+		
+		
+		Image itemImage1 = new Image(coin1.getImagePath(), 50, 50, false, appear);
+		Image itemImage2 = new Image(coin2.getImagePath(), 50, 50, false, appear);
+		Image itemImage3 = new Image(coin3.getImagePath(), 50, 50, false, appear);
+		Image itemImage4 = new Image(coin4.getImagePath(), 50, 50, false, appear);
+		Image itemImage5 = new Image(coin5.getImagePath(), 50, 50, false, appear);
 		
 		itemImageView1 = new ImageView(itemImage1);
 		itemImageView1.setFitWidth(25);
@@ -183,12 +170,16 @@ public class Driver extends Application {
 		itemImageView5.setX(coin5.getX());
 		itemImageView5.setY(coin5.getY());
 		
+		
+		
 		//System.out.println(items.toString());
 		
-		int itemCollected = 0;
 		String name = txt.getText();
 		
 		playerOne pOne = new playerOne(name,itemCollected);
+		
+		score.setX(0);
+		score.setY(0);
 		
 		
 		text1 = new Text();
@@ -196,7 +187,7 @@ public class Driver extends Application {
 		
 		
 		
-		Group root2 = new Group(myImageView,text1,itemImageView1,itemImageView2,itemImageView3,itemImageView4,itemImageView5);
+		Group root2 = new Group(myImageView,text1,score, itemImageView1,itemImageView2,itemImageView3,itemImageView4,itemImageView5);
 		Scene scene2 = new Scene(root2,500,500,Color.WHITE);
 		scene2.setOnKeyPressed(this::listenUp);
 		Stage SecondaryStage = new Stage();
@@ -210,35 +201,56 @@ public class Driver extends Application {
 		
 		if(myCode == KeyCode.A)
 		{
-			x-=10;
+			move.setX(x-=10);
 			
 			
 		}
 		else if(myCode == KeyCode.D)
 		{
-			x+=10;
+			move.setX(x+=10);
 			
 		}
 		else if(myCode == KeyCode.S)
 		{
-			y+=10;
-			
-			
+			move.setY(y+=10);
+				
 		}
 		else if(myCode == KeyCode.W)
 		{
-			y-=10;
-			
-		
+			move.setY(y-=10);
+	
 		}
 		
-
-		myImageView.setX(x);
-		myImageView.setY(y);
-		text1.setX(x);
-		text1.setY(y);
 		
+		myImageView.setX(move.getX());
+		myImageView.setY(move.getY());
+		text1.setX(move.getX());
+		text1.setY(move.getY());
+		
+		hit.item1TopLeftX = coin1.getX();
+		hit.item1TopLeftY = coin1.getY();
+		hit.item1BottomRightX = coin1.getX() + 25;
+		hit.item1BottomRightY = coin1.getY() + 25;
+		hit.player1TopLeftX = (int)myImageView.getX();
+		hit.player1TopLeftY = (int)myImageView.getY();
+		hit.player1BottomRightX = (int)myImageView.getX() + 50;
+		hit.player1BottomRightY = (int)myImageView.getY() + 50;
+		
+		
+		if (hit.player1TopLeftX < hit.item1BottomRightX && hit.player1BottomRightX >
+		hit.item1TopLeftX&& hit.player1TopLeftY < hit.item1BottomRightY && hit.player1BottomRightY >
+		hit.item1TopLeftY) 
+		{
+		itemImageView1.setImage(null);
+		itemCollected = itemCollected + 1;
+		}
+		
+		score.setText("Points: " + itemCollected);
+		System.out.println(coin1.getX());
+		System.out.println(myImageView.getX());
+		System.out.println(score);
 		
 	}
+	
 	
 }
