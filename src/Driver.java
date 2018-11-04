@@ -3,6 +3,7 @@ import java.util.Random;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -353,8 +355,8 @@ public class Driver extends Application {
 		if(itemCollected > 35) {
 			Text myText1 = new Text();
 			Text myText = new Text();
-			String answer = "";
-			do {
+			Button myButton;
+			
 			myText = new Text("GAME OVER");
 			myText.setFont(Font.font(40));
 			myText.setLayoutX(50);
@@ -367,16 +369,29 @@ public class Driver extends Application {
 			txt = new TextField("Y/N");
 			txt.setLayoutX(50);
 			txt.setLayoutY(300);
-			}while(answer.equalsIgnoreCase("Y"));
 			
+			myButton = new Button("SUBMIT");
+			HBox button = new HBox(myButton);
+			button.setAlignment(Pos.BOTTOM_CENTER);
+			myButton.setLayoutX(50);
+			myButton.setLayoutY(375);
+			myButton.setOnAction(this::Restart);
 			
-			Group root3 = new Group(myText,myText1,txt);
+			Group root3 = new Group(myText,myText1,txt, myButton, button);
 			Scene scene3 = new Scene(root3,500,500,Color.WHITE);
 			Stage ThirdStage = new Stage();
 			ThirdStage.setScene(scene3);
 			ThirdStage.show();
 		}
-	}
+		
 	
+	}
+	public void Restart(ActionEvent args1) {
+		String answer = txt.getText();
+		if (answer.equalsIgnoreCase("y")) {
+			
+			startGame(args1);
+		}
+	}
 	
 }
