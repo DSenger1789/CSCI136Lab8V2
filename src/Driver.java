@@ -317,19 +317,65 @@ public class Driver extends Application {
 		hit.enemy1TopLeftX&& hit.player1TopLeftY < hit.enemy1BottomRightY && hit.player1BottomRightY >
 		hit.enemy1TopLeftY) 
 		{
-		itemImageView5.setImage(null);
-		itemCollected = itemCollected + 1;
-		}
+			Text myText1 = new Text();
+			Text myText = new Text();
+			String answer = "";
+			do {
+			myText = new Text("GAME OVER");
+			myText.setFont(Font.font(40));
+			myText.setLayoutX(50);
+			myText.setLayoutY(100);
+			
+			myText1 = new Text("Restart Game? (Y/N)");
+			myText1.setLayoutX(50);
+			myText1.setLayoutY(200);
+			
+			txt = new TextField("Y/N");
+			txt.setLayoutX(50);
+			txt.setLayoutY(300);
+			}while(answer.equalsIgnoreCase("Y"));
+			
+			
+			Group root3 = new Group(myText,myText1,txt);
+			Scene scene3 = new Scene(root3,500,500,Color.WHITE);
+			Stage ThirdStage = new Stage();
+			ThirdStage.setScene(scene3);
+			ThirdStage.show();
+	}
 		
-		if (itemImageView1.getImage()  == null) {
-			itemCollected = itemCollected + 1;
-		}
+		
 		
 		score.setText("Points: " + itemCollected);
 		System.out.println(coin1.getX());
 		System.out.println(myImageView.getX());
 		System.out.println(score);
 		
+		if(itemCollected > 35) {
+			Text myText1 = new Text();
+			Text myText = new Text();
+			String answer = "";
+			do {
+			myText = new Text("GAME OVER");
+			myText.setFont(Font.font(40));
+			myText.setLayoutX(50);
+			myText.setLayoutY(100);
+			
+			myText1 = new Text("Restart Game? (Y/N)");
+			myText1.setLayoutX(50);
+			myText1.setLayoutY(200);
+			
+			txt = new TextField("Y/N");
+			txt.setLayoutX(50);
+			txt.setLayoutY(300);
+			}while(answer.equalsIgnoreCase("Y"));
+			
+			
+			Group root3 = new Group(myText,myText1,txt);
+			Scene scene3 = new Scene(root3,500,500,Color.WHITE);
+			Stage ThirdStage = new Stage();
+			ThirdStage.setScene(scene3);
+			ThirdStage.show();
+		}
 	}
 	
 	
